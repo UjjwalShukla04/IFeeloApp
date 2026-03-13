@@ -19,7 +19,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   void _checkAuth() async {
     // Wait for 10 seconds (as requested)
-    await Future.delayed(const Duration(seconds: 10));
+    await Future.delayed(const Duration(seconds: 5));
     if (!mounted) return;
 
     // Check if user is logged in
