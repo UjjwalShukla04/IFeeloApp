@@ -15,6 +15,16 @@ import 'package:flutter/foundation.dart'
 /// );
 /// ```
 class DefaultFirebaseOptions {
+  static const String _firebaseWebApiKey = String.fromEnvironment(
+    'FIREBASE_WEB_API_KEY',
+    defaultValue: '',
+  );
+
+  static const String _firebaseAndroidApiKey = String.fromEnvironment(
+    'FIREBASE_ANDROID_API_KEY',
+    defaultValue: '',
+  );
+
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       return web;
@@ -50,7 +60,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAHkJLjY4mf3z2K57N-mA9u59d1y07s8_k',
+    apiKey: _firebaseWebApiKey,
     appId: '1:837627248368:web:75630453303c2003824c35',
     messagingSenderId: '837627248368',
     projectId: 'ifeelo-b1a99',
@@ -59,7 +69,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAHkJLjY4mf3z2K57N-mA9u59d1y07s8_k',
+    apiKey: _firebaseAndroidApiKey,
     appId: '1:837627248368:android:275bc6fe594ff6f4824c35',
     messagingSenderId: '837627248368',
     projectId: 'ifeelo-b1a99',
