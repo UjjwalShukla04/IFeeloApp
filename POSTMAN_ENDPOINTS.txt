@@ -1,0 +1,114 @@
+# Postman Collection / API Documentation for Dating App Backend
+# Base URL: http://localhost:5000/api
+
+---
+
+## Authentication
+
+### 1. Register User
+- **Method:** POST
+- **URL:** {{base_url}}/auth/register
+- **Description:** Register a new user account.
+- **Headers:** 
+  - Content-Type: application/json
+- **Body (JSON):**
+  ```json
+  {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "securepassword123"
+  }
+  ```
+- **Response (201 Created):**
+  ```json
+  {
+    "_id": "653fb...",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "token": "jwt_token_string...",
+    "refreshToken": "refresh_token_string..."
+  }
+  ```
+
+### 2. Login User
+- **Method:** POST
+- **URL:** {{base_url}}/auth/login
+- **Description:** Authenticate user and get a JWT token.
+- **Headers:** 
+  - Content-Type: application/json
+- **Body (JSON):**
+  ```json
+  {
+    "email": "john@example.com",
+    "password": "securepassword123"
+  }
+  ```
+- **Response (200 OK):**
+  ```json
+  {
+    "_id": "653fb...",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "token": "jwt_token_string...",
+    "refreshToken": "refresh_token_string..."
+  }
+  ```
+
+---
+
+## Feed & Matches (Protected Routes)
+*Note: Add `Authorization: Bearer <token>` header to all requests below.*
+
+### 3. Get Feed
+- **Method:** GET
+- **URL:** {{base_url}}/feed
+- **Description:** Get a list of potential matches (users) excluding those already swiped.
+- **Headers:**
+  - Authorization: Bearer {{token}}
+- **Response (200 OK):**
+  ```json
+  [
+    {
+      "_id": "654ab...",
+      "name": "Jane Smith",
+      "bio": "Loves hiking and coffee",
+      "photos": ["url1", "url2"],
+      "age": 25,
+      "location": { ... }
+    },
+    ...
+  ]
+  ```
+
+### 4. Swipe User
+- **Method:** POST
+- **URL:** {{base_url}}/feed/swipe
+- **Description:** Record a swipe action (like, dislike, superlike) on a user. Checks for a match if liked.
+- **Headers:**
+  - Content-Type: application/json
+  - Authorization: Bearer {{token}}
+- **Body (JSON):**
+  ```json
+  {
+    "swipedId": "654ab...",
+    "action": "like" 
+  }
+  ```
+  *Allowed actions: "like", "dislike", "superlike"*
+- **Response (200 OK):**
+  ```json
+  {
+    "success": true,
+    "isMatch": true
+  }
+  ```
+
+---
+
+## Environment Variables (.env)
+Ensure your backend `.env` file has the following:
+```
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/dating_app
+JWT_SECRET=your_jwt_secret_key
+```

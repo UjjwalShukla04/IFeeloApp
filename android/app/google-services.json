@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "837627248368",
+    "project_id": "ifeelo-b1a99",
+    "storage_bucket": "ifeelo-b1a99.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837627248368:android:275bc6fe594ff6f4824c35",
+        "android_client_info": {
+          "package_name": "com.example.dating_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHkJLjY4mf3z2K57N-mA9u59d1y07s8_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
