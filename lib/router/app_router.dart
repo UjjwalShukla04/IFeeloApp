@@ -13,6 +13,7 @@ import '../features/onboarding/presentation/onboarding_screen.dart';
 import '../features/onboarding/presentation/splash_screen.dart';
 import '../features/home/presentation/match_found_screen.dart';
 import '../features/home/presentation/user_profile_detail_screen.dart';
+import '../features/assessment/presentation/assessment_screen.dart';
 import '../core/models/mock_models.dart'; // Import mock models
 
 final goRouter = GoRouter(
@@ -22,6 +23,10 @@ final goRouter = GoRouter(
     GoRoute(
       path: '/onboarding',
       builder: (context, state) => const OnboardingScreen(),
+    ),
+    GoRoute(
+      path: '/assessment',
+      builder: (context, state) => const AssessmentScreen(),
     ),
     GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
     GoRoute(

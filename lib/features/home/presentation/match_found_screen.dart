@@ -46,7 +46,7 @@ class _MatchFoundScreenState extends State<MatchFoundScreen> with SingleTickerPr
           Image.network(
             widget.matchedUser.imageUrls.first,
             fit: BoxFit.cover,
-            color: Colors.black.withOpacity(0.8),
+            color: Colors.black.withAlpha(204),
             colorBlendMode: BlendMode.darken,
           ),
           

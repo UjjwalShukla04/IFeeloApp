@@ -114,7 +114,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               children: ['Coffee', 'Hiking', 'Art', 'Music', 'Travel'].map((interest) {
                 return Chip(
                   label: Text(interest),
-                  backgroundColor: const Color(0xFFE94057).withOpacity(0.1),
+                  backgroundColor: const Color(0xFFE94057).withAlpha(26),
                   labelStyle: const TextStyle(color: Color(0xFFE94057)),
                   deleteIcon: const Icon(Icons.close, size: 16, color: Color(0xFFE94057)),
                   onDeleted: () {},

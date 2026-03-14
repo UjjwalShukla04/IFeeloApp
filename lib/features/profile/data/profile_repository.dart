@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:convert';
@@ -35,7 +36,7 @@ class MockProfileRepository implements ProfileRepository {
   Future<void> createProfile(String userId, Map<String, dynamic> data) async {
     await Future.delayed(const Duration(seconds: 1));
     _storage[userId] = data;
-    print('Mock DB: Saved profile for $userId: $data');
+    debugPrint('Mock DB: Saved profile for $userId: $data');
   }
 
   @override

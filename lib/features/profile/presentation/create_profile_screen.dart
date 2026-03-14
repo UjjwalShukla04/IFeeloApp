@@ -28,7 +28,9 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
     try {
       final pickedFiles = await ImagePicker().pickMultiImage();
       if (pickedFiles.isNotEmpty) {
-        final bytesList = await Future.wait(pickedFiles.map((f) => f.readAsBytes()));
+        final bytesList = await Future.wait(
+          pickedFiles.map((f) => f.readAsBytes()),
+        );
         setState(() {
           _imageFiles
             ..clear()
@@ -39,7 +41,10 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
         });
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to pick image: $e')));
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Failed to pick image: $e')));
     }
   }
 
@@ -76,7 +81,8 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
       lastDate: last,
     );
     if (picked != null) {
-      _dobController.text = '${picked.year}-${picked.month.toString().padLeft(2, '0')}-${picked.day.toString().padLeft(2, '0')}';
+      _dobController.text =
+          '${picked.year}-${picked.month.toString().padLeft(2, '0')}-${picked.day.toString().padLeft(2, '0')}';
     }
   }
 
@@ -91,7 +97,7 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
     }
 
     setState(() => _isLoading = true);
-    
+
     // Show progress
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Saving profile... Please wait.')),
@@ -109,42 +115,54 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
         debugPrint('Uploading image $count...');
         // Optional: Update UI with specific status if we had a status state variable
         try {
-            final url = await repo.uploadImage(uid, img).timeout(
+          final url = await repo
+              .uploadImage(uid, img)
+              .timeout(
                 const Duration(seconds: 10),
-                onTimeout: () => throw Exception('Image upload timed out. Check Firebase Storage.'),
-            );
-            uploadedUrls.add(url);
+                onTimeout: () => throw Exception(
+                  'Image upload timed out. Check Firebase Storage.',
+                ),
+              );
+          uploadedUrls.add(url);
         } catch (e) {
-            debugPrint('Image upload failed: $e');
-            // If upload fails, maybe skip or use a placeholder? 
-            // For now, let's rethrow to alert the user
-            throw Exception('Failed to upload image $count: $e. Make sure Firebase Storage is enabled.');
+          debugPrint('Image upload failed: $e');
+          // If upload fails, maybe skip or use a placeholder?
+          // For now, let's rethrow to alert the user
+          throw Exception(
+            'Failed to upload image $count: $e. Make sure Firebase Storage is enabled.',
+          );
         }
       }
 
       debugPrint('Saving to Firestore...');
-      await repo.createProfile(uid, {
-        'uid': uid,
-        'displayName': _nameController.text.trim(),
-        'bio': _bioController.text.trim(),
-        'gender': _gender,
-        'dob': _dobController.text.trim(),
-        'photos': uploadedUrls,
-        'interests': _selectedInterests.toList(),
-      }).timeout(
-        const Duration(seconds: 10), 
-        onTimeout: () => throw Exception('Firestore save timed out. Check Firestore Database.'),
-      );
+      await repo
+          .createProfile(uid, {
+            'uid': uid,
+            'displayName': _nameController.text.trim(),
+            'bio': _bioController.text.trim(),
+            'gender': _gender,
+            'dob': _dobController.text.trim(),
+            'photos': uploadedUrls,
+            'interests': _selectedInterests.toList(),
+          })
+          .timeout(
+            const Duration(seconds: 10),
+            onTimeout: () => throw Exception(
+              'Firestore save timed out. Check Firestore Database.',
+            ),
+          );
 
       debugPrint('Profile saved successfully.');
       if (mounted) context.go('/');
     } catch (e) {
       debugPrint('Error saving profile: $e');
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
             content: Text('Error: ${e.toString()}'),
             duration: const Duration(seconds: 5),
-        ));
+          ),
+        );
       }
     } finally {
       if (mounted) setState(() => _isLoading = false);
@@ -160,7 +178,11 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
         child: LayoutBuilder(
           builder: (context, constraints) {
             final isWide = constraints.maxWidth > 700;
-            final gridCount = constraints.maxWidth > 900 ? 4 : constraints.maxWidth > 600 ? 3 : 2;
+            final gridCount = constraints.maxWidth > 900
+                ? 4
+                : constraints.maxWidth > 600
+                ? 3
+                : 2;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -169,7 +191,8 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
                     Expanded(
                       child: Text(
                         'Photos',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                     ),
                     TextButton.icon(
@@ -211,7 +234,11 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
                               child: const CircleAvatar(
                                 radius: 14,
                                 backgroundColor: Colors.black54,
-                                child: Icon(Icons.close, color: Colors.white, size: 16),
+                                child: Icon(
+                                  Icons.close,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
                               ),
                             ),
                           ),
@@ -238,18 +265,29 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
                     ? Row(
                         children: [
                           Expanded(
-                            child: CustomTextField(controller: _nameController, hintText: 'Full Name'),
+                            child: CustomTextField(
+                              controller: _nameController,
+                              hintText: 'Full Name',
+                            ),
                           ),
                           const SizedBox(width: 16),
                           Expanded(
                             child: DropdownButtonFormField<String>(
                               initialValue: _gender,
                               items: ['Male', 'Female', 'Other']
-                                  .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                                  .map(
+                                    (e) => DropdownMenuItem(
+                                      value: e,
+                                      child: Text(e),
+                                    ),
+                                  )
                                   .toList(),
-                              onChanged: (val) => setState(() => _gender = val ?? _gender),
+                              onChanged: (val) =>
+                                  setState(() => _gender = val ?? _gender),
                               decoration: InputDecoration(
-                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
                                 filled: true,
                                 fillColor: Colors.grey.shade50,
                               ),
@@ -259,16 +297,27 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
                       )
                     : Column(
                         children: [
-                          CustomTextField(controller: _nameController, hintText: 'Full Name'),
+                          CustomTextField(
+                            controller: _nameController,
+                            hintText: 'Full Name',
+                          ),
                           const SizedBox(height: 16),
                           DropdownButtonFormField<String>(
                             initialValue: _gender,
                             items: ['Male', 'Female', 'Other']
-                                .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                                .map(
+                                  (e) => DropdownMenuItem(
+                                    value: e,
+                                    child: Text(e),
+                                  ),
+                                )
                                 .toList(),
-                            onChanged: (val) => setState(() => _gender = val ?? _gender),
+                            onChanged: (val) =>
+                                setState(() => _gender = val ?? _gender),
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                               filled: true,
                               fillColor: Colors.grey.shade50,
                             ),
@@ -281,7 +330,9 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
                   readOnly: true,
                   decoration: InputDecoration(
                     hintText: 'Date of Birth',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     suffixIcon: const Icon(Icons.calendar_today),
                   ),
                   onTap: _pickDob,
@@ -292,13 +343,17 @@ class _CreateProfileScreenState extends ConsumerState<CreateProfileScreen> {
                   maxLines: 3,
                   decoration: InputDecoration(
                     hintText: 'Bio',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),
                 Text(
                   'Interests',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 8),
                 Wrap(

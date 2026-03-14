@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -12,6 +13,12 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(
         children: [
           _buildSectionHeader(context, 'Account Settings'),
+          ListTile(
+            title: const Text('EQ Assessment'),
+            subtitle: const Text('Take/retake the EQ questionnaire'),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () => context.push('/assessment'),
+          ),
           ListTile(
             title: const Text('Phone Number'),
             subtitle: const Text('+1 234 567 890'),

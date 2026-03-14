@@ -7,7 +7,8 @@ class CreateAccountScreen extends ConsumerStatefulWidget {
   const CreateAccountScreen({super.key});
 
   @override
-  ConsumerState<CreateAccountScreen> createState() => _CreateAccountScreenState();
+  ConsumerState<CreateAccountScreen> createState() =>
+      _CreateAccountScreenState();
 }
 
 class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
@@ -42,12 +43,20 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
     final first = _firstNameController.text.trim();
     final last = _lastNameController.text.trim();
 
-    if (first.isEmpty || last.isEmpty || email.isEmpty || password.isEmpty || confirm.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please fill all fields')));
+    if (first.isEmpty ||
+        last.isEmpty ||
+        email.isEmpty ||
+        password.isEmpty ||
+        confirm.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Please fill all fields')));
       return;
     }
     if (password != confirm) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Passwords do not match')));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Passwords do not match')));
       return;
     }
 
@@ -58,7 +67,9 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error: $e')));
       }
     }
   }
@@ -66,7 +77,6 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
   @override
   Widget build(BuildContext context) {
     final isLoading = ref.watch(authControllerProvider);
-
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -82,24 +92,24 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                   Text(
                     'Join millions finding love with HeartMate',
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     'Build connections for today, tomorrow, and beyond.',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Colors.white70,
-                        ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge?.copyWith(color: Colors.white70),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     'Love to future‑proof your heart.',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: const Color(0xFFE94057),
-                          fontStyle: FontStyle.italic,
-                        ),
+                      color: const Color(0xFFE94057),
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
                   const SizedBox(height: 24),
                   Row(
@@ -142,9 +152,15 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                       } else {
                         return Column(
                           children: [
-                            _darkTextField(controller: _firstNameController, label: 'First Name'),
+                            _darkTextField(
+                              controller: _firstNameController,
+                              label: 'First Name',
+                            ),
                             const SizedBox(height: 16),
-                            _darkTextField(controller: _lastNameController, label: 'Last Name'),
+                            _darkTextField(
+                              controller: _lastNameController,
+                              label: 'Last Name',
+                            ),
                           ],
                         );
                       }
@@ -167,8 +183,15 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                           obscureText: _obscurePassword,
                           prefixIcon: Icons.lock_outline,
                           suffix: IconButton(
-                            icon: Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off, color: Colors.white70),
-                            onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                            icon: Icon(
+                              _obscurePassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.white70,
+                            ),
+                            onPressed: () => setState(
+                              () => _obscurePassword = !_obscurePassword,
+                            ),
                           ),
                         ),
                       ),
@@ -180,8 +203,15 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                           obscureText: _obscureConfirm,
                           prefixIcon: Icons.lock_outline,
                           suffix: IconButton(
-                            icon: Icon(_obscureConfirm ? Icons.visibility : Icons.visibility_off, color: Colors.white70),
-                            onPressed: () => setState(() => _obscureConfirm = !_obscureConfirm),
+                            icon: Icon(
+                              _obscureConfirm
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.white70,
+                            ),
+                            onPressed: () => setState(
+                              () => _obscureConfirm = !_obscureConfirm,
+                            ),
                           ),
                         ),
                       ),
@@ -195,11 +225,17 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFB38F00),
                         padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                       child: Text(
                         'Create Account',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                     ),
                   ),
@@ -228,17 +264,19 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen> {
       decoration: InputDecoration(
         labelText: label,
         labelStyle: const TextStyle(color: Colors.white70),
-        prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: Colors.white70) : null,
+        prefixIcon: prefixIcon != null
+            ? Icon(prefixIcon, color: Colors.white70)
+            : null,
         suffixIcon: suffix,
         filled: true,
         fillColor: const Color(0xFF12161A),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.white.withOpacity(0.1)),
+          borderSide: BorderSide(color: Colors.white.withAlpha(26)),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.white.withOpacity(0.1)),
+          borderSide: BorderSide(color: Colors.white.withAlpha(26)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),

@@ -133,11 +133,11 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
           ),
-          insetPadding:
-              const EdgeInsets.symmetric(horizontal: 24, vertical: 80),
-          child: FeelingPromptSheet(
-            onSubmit: _handleFeelingSubmit,
+          insetPadding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 80,
           ),
+          child: FeelingPromptSheet(onSubmit: _handleFeelingSubmit),
         );
       },
     );
@@ -160,19 +160,14 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
         title: Row(
           children: [
             CircleAvatar(
-              backgroundImage: NetworkImage(
-                _chatUser.imageUrls.first,
-              ),
+              backgroundImage: NetworkImage(_chatUser.imageUrls.first),
               radius: 18,
             ),
             const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  _chatUser.name,
-                  style: const TextStyle(fontSize: 16),
-                ),
+                Text(_chatUser.name, style: const TextStyle(fontSize: 16)),
                 Text(
                   _isTyping ? 'Typing...' : 'Online',
                   style: TextStyle(
@@ -218,7 +213,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                           color: Colors.pink.shade50,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                            color: const Color(0xFFE94057).withOpacity(0.3),
+                            color: const Color(0xFFE94057).withAlpha(77),
                           ),
                         ),
                         child: Text(
@@ -261,7 +256,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
+                          color: Colors.black.withAlpha(13),
                           blurRadius: 5,
                           offset: const Offset(0, 2),
                         ),
@@ -312,7 +307,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
+                  color: Colors.grey.withAlpha(26),
                   blurRadius: 10,
                   offset: const Offset(0, -5),
                 ),

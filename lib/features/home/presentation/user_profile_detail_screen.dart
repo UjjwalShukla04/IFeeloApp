@@ -27,7 +27,7 @@ class UserProfileDetailScreen extends StatelessWidget {
                         end: Alignment.bottomCenter,
                         colors: [
                           Colors.transparent,
-                          Colors.black.withOpacity(0.7),
+                          Colors.black.withAlpha(179),
                         ],
                         stops: const [0.6, 1.0],
                       ),
@@ -282,7 +282,7 @@ class _UserInfoSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.03),
+            color: Colors.black.withAlpha(8),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -361,7 +361,7 @@ class _PromptCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.03),
+            color: Colors.black.withAlpha(8),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -415,7 +415,7 @@ class _LocationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.03),
+            color: Colors.black.withAlpha(8),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),

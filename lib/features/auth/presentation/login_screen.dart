@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/widgets/common_widgets.dart';
-import 'auth_controller.dart';
+import '../../../core/services/api_service.dart';
 
-class LoginScreen extends ConsumerStatefulWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  ConsumerState<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -23,17 +23,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   void _login() async {
+    if (_isLoading) return;
+    setState(() => _isLoading = true);
     try {
-      await ref
-          .read(authControllerProvider.notifier)
-          .login(_emailController.text.trim(), _passwordController.text.trim());
+      final data = await ApiService.login(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
       if (mounted) {
-        context.go('/');
+        final hasCompleted = (data['has_completed_assessment'] ?? false) == true;
+        context.go(hasCompleted ? '/' : '/assessment');
       }
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(e.toString())));
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
@@ -45,8 +52,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = ref.watch(authControllerProvider);
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -81,7 +86,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               PrimaryButton(
                 onPressed: _login,
                 text: 'Login',
-                isLoading: isLoading,
+                isLoading: _isLoading,
               ),
               const SizedBox(height: 16),
               TextButton(

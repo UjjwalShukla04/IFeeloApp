@@ -88,6 +88,10 @@ const userSchema = new mongoose.Schema(
       },
     },
     fcmToken: String, // For Push Notifications
+    has_completed_assessment: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

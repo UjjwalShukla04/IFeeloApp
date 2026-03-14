@@ -1,0 +1,408 @@
+{
+  "meta": {
+    "title": "EQ Assessment",
+    "description": "A comprehensive 4-part assessment covering Traits, Situational Judgment, Emotional Ability, and Integrity.",
+    "estimated_time_minutes": 15,
+    "total_questions": 40
+  },
+  "sections": [
+    {
+      "id": "A",
+      "title": "Section A: Forced Choice Traits",
+      "instruction": "Choose ONE option that is MOST like you and ONE option that is LEAST like you.",
+      "questions": [
+        {
+          "id": "Q1",
+          "text": "Select the statements that best describe you:",
+          "type": "forced_choice",
+          "options": [
+            { "id": "A", "text": "I notice subtle emotional changes" },
+            { "id": "B", "text": "I stay calm under emotional pressure" },
+            { "id": "C", "text": "I feel others’ emotions strongly" }
+          ]
+        },
+        {
+          "id": "Q2",
+          "text": "Select the statements that best describe you:",
+          "type": "forced_choice",
+          "options": [
+            { "id": "A", "text": "I pause before reacting" },
+            { "id": "B", "text": "I express emotions naturally" },
+            { "id": "C", "text": "I adjust to others’ moods" }
+          ]
+        },
+        {
+          "id": "Q3",
+          "text": "Select the statements that best describe you:",
+          "type": "forced_choice",
+          "options": [
+            { "id": "A", "text": "I avoid emotional tension" },
+            { "id": "B", "text": "I face emotional issues directly" },
+            { "id": "C", "text": "I seek reassurance" }
+          ]
+        },
+        {
+          "id": "Q4",
+          "text": "Select the statements that best describe you:",
+          "type": "forced_choice",
+          "options": [
+            { "id": "A", "text": "I detach when overwhelmed" },
+            { "id": "B", "text": "I talk emotions through" },
+            { "id": "C", "text": "I distract myself" }
+          ]
+        },
+        {
+          "id": "Q5",
+          "text": "Select the statements that best describe you:",
+          "type": "forced_choice",
+          "options": [
+            { "id": "A", "text": "Emotional stability" },
+            { "id": "B", "text": "Emotional closeness" },
+            { "id": "C", "text": "Emotional independence" }
+          ]
+        },
+        {
+          "id": "Q6",
+          "text": "Select the statements that best describe you:",
+          "type": "forced_choice",
+          "options": [
+            { "id": "A", "text": "I control emotions internally" },
+            { "id": "B", "text": "I express emotions openly" },
+            { "id": "C", "text": "I soften others’ emotions" }
+          ]
+        },
+        {
+          "id": "Q7",
+          "text": "Select the statements that best describe you:",
+          "type": "forced_choice",
+          "options": [
+            { "id": "A", "text": "I stay emotionally consistent" },
+            { "id": "B", "text": "I trust emotional instincts" },
+            { "id": "C", "text": "I rely on emotional feedback" }
+          ]
+        },
+        {
+          "id": "Q8",
+          "text": "Select the statements that best describe you:",
+          "type": "forced_choice",
+          "options": [
+            { "id": "A", "text": "I stay composed in conflict" },
+            { "id": "B", "text": "I explain emotions clearly" },
+            { "id": "C", "text": "I adapt tone easily" }
+          ]
+        },
+        {
+          "id": "Q9",
+          "text": "Select the statements that best describe you:",
+          "type": "forced_choice",
+          "options": [
+            { "id": "A", "text": "I feel deeply but hide it" },
+            { "id": "B", "text": "I express feelings quickly" },
+            { "id": "C", "text": "I analyze emotions first" }
+          ]
+        },
+        {
+          "id": "Q10",
+          "text": "Select the statements that best describe you:",
+          "type": "forced_choice",
+          "options": [
+            { "id": "A", "text": "Emotional safety matters most" },
+            { "id": "B", "text": "Emotional honesty matters most" },
+            { "id": "C", "text": "Emotional freedom matters most" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "title": "Section B: Situational Judgment",
+      "instruction": "Choose the best response for each scenario.",
+      "questions": [
+        {
+          "id": "Q11",
+          "text": "Your match says: “That didn’t feel good.”",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Apologize & ask why" },
+            { "id": "B", "text": "Explain intention" },
+            { "id": "C", "text": "Stay quiet" },
+            { "id": "D", "text": "Light joke" }
+          ]
+        },
+        {
+          "id": "Q12",
+          "text": "Match replies late repeatedly.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Assume busy" },
+            { "id": "B", "text": "Feel anxious silently" },
+            { "id": "C", "text": "Confront directly" },
+            { "id": "D", "text": "Withdraw" }
+          ]
+        },
+        {
+          "id": "Q13",
+          "text": "Disagreement arises.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Stay calm" },
+            { "id": "B", "text": "Be understood" },
+            { "id": "C", "text": "Resolve fast" },
+            { "id": "D", "text": "Be right" }
+          ]
+        },
+        {
+          "id": "Q14",
+          "text": "Match seems distant.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Give space" },
+            { "id": "B", "text": "Ask gently" },
+            { "id": "C", "text": "Mirror distance" },
+            { "id": "D", "text": "Get upset" }
+          ]
+        },
+        {
+          "id": "Q15",
+          "text": "Partner apologizes emotionally.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Accept calmly" },
+            { "id": "B", "text": "Explore feelings" },
+            { "id": "C", "text": "Stay guarded" },
+            { "id": "D", "text": "Dismiss" }
+          ]
+        },
+        {
+          "id": "Q16",
+          "text": "Match is emotional on call.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Listen quietly" },
+            { "id": "B", "text": "Validate feelings" },
+            { "id": "C", "text": "Offer solution" },
+            { "id": "D", "text": "Change topic" }
+          ]
+        },
+        {
+          "id": "Q17",
+          "text": "You feel misunderstood.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Clarify calmly" },
+            { "id": "B", "text": "Withdraw" },
+            { "id": "C", "text": "Get defensive" },
+            { "id": "D", "text": "Joke" }
+          ]
+        },
+        {
+          "id": "Q18",
+          "text": "Argument escalates.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Pause conversation" },
+            { "id": "B", "text": "Push resolution" },
+            { "id": "C", "text": "Assert strongly" },
+            { "id": "D", "text": "End chat" }
+          ]
+        },
+        {
+          "id": "Q19",
+          "text": "Match shares insecurity.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Reassure emotionally" },
+            { "id": "B", "text": "Normalize lightly" },
+            { "id": "C", "text": "Avoid depth" },
+            { "id": "D", "text": "Minimize" }
+          ]
+        },
+        {
+          "id": "Q20",
+          "text": "You feel irritated.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Pause before replying" },
+            { "id": "B", "text": "Reply honestly immediately" },
+            { "id": "C", "text": "Distract yourself" },
+            { "id": "D", "text": "Ignore message" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "title": "Section C: Emotional Ability",
+      "instruction": "Choose the most emotionally intelligent interpretation.",
+      "questions": [
+        {
+          "id": "Q21",
+          "text": "Text: “Okay, I guess.”",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Mild disappointment with acceptance" },
+            { "id": "B", "text": "Neutral acceptance" },
+            { "id": "C", "text": "Subtle irritation" },
+            { "id": "D", "text": "Emotional detachment" }
+          ]
+        },
+        {
+          "id": "Q22",
+          "text": "Match says “It’s fine” after delay.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Mixed disappointment" },
+            { "id": "B", "text": "Neutral calm" },
+            { "id": "C", "text": "Suppressed anger" },
+            { "id": "D", "text": "Indifference" }
+          ]
+        },
+        {
+          "id": "Q23",
+          "text": "Jealousy appears.",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Name emotion internally" },
+            { "id": "B", "text": "Seek reassurance" },
+            { "id": "C", "text": "Distract self" },
+            { "id": "D", "text": "Suppress feeling" }
+          ]
+        },
+        {
+          "id": "Q24",
+          "text": "Withdrawal for one day means:",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Processing emotions" },
+            { "id": "B", "text": "Losing interest" },
+            { "id": "C", "text": "Seeking attention" },
+            { "id": "D", "text": "Emotional avoidance" }
+          ]
+        },
+        {
+          "id": "Q25",
+          "text": "Raised voice often signals:",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Overwhelm" },
+            { "id": "B", "text": "Anger only" },
+            { "id": "C", "text": "Control attempt" },
+            { "id": "D", "text": "Disrespect" }
+          ]
+        },
+        {
+          "id": "Q26",
+          "text": "Silence after conflict likely means:",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Emotional overload" },
+            { "id": "B", "text": "Punishment" },
+            { "id": "C", "text": "Detachment" },
+            { "id": "D", "text": "Disinterest" }
+          ]
+        },
+        {
+          "id": "Q27",
+          "text": "Healthy regulation means:",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Feeling + managing emotion" },
+            { "id": "B", "text": "Avoiding emotion" },
+            { "id": "C", "text": "Expressing instantly" },
+            { "id": "D", "text": "Ignoring emotion" }
+          ]
+        },
+        {
+          "id": "Q28",
+          "text": "Empathy is best shown by:",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Naming feelings accurately" },
+            { "id": "B", "text": "Giving advice" },
+            { "id": "C", "text": "Distracting" },
+            { "id": "D", "text": "Reassuring quickly" }
+          ]
+        },
+        {
+          "id": "Q29",
+          "text": "Strong emotions require:",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Slowing response" },
+            { "id": "B", "text": "Expressing fast" },
+            { "id": "C", "text": "Suppressing" },
+            { "id": "D", "text": "Avoiding" }
+          ]
+        },
+        {
+          "id": "Q30",
+          "text": "Emotional maturity is:",
+          "type": "multiple_choice",
+          "options": [
+            { "id": "A", "text": "Responding intentionally" },
+            { "id": "B", "text": "Never feeling strongly" },
+            { "id": "C", "text": "Always being calm" },
+            { "id": "D", "text": "Avoiding conflict" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "title": "Section D: Integrity & Consistency",
+      "instruction": "Rate how much you agree (1 = Strongly Disagree, 5 = Strongly Agree).",
+      "questions": [
+        {
+          "id": "Q31",
+          "text": "I understand emotions well.",
+          "type": "scale_1_5"
+        },
+        {
+          "id": "Q32",
+          "text": "I often feel confused by emotions.",
+          "type": "scale_1_5"
+        },
+        {
+          "id": "Q33",
+          "text": "I usually know what to say emotionally.",
+          "type": "scale_1_5"
+        },
+        {
+          "id": "Q34",
+          "text": "I avoid emotional talks.",
+          "type": "scale_1_5"
+        },
+        {
+          "id": "Q35",
+          "text": "I stay calm under pressure.",
+          "type": "scale_1_5"
+        },
+        {
+          "id": "Q36",
+          "text": "I express feelings easily.",
+          "type": "scale_1_5"
+        },
+        {
+          "id": "Q37",
+          "text": "I struggle naming emotions.",
+          "type": "scale_1_5"
+        },
+        {
+          "id": "Q38",
+          "text": "I reflect before reacting.",
+          "type": "scale_1_5"
+        },
+        {
+          "id": "Q39",
+          "text": "I feel overwhelmed by emotions.",
+          "type": "scale_1_5"
+        },
+        {
+          "id": "Q40",
+          "text": "Others see me as emotionally stable.",
+          "type": "scale_1_5"
+        }
+      ]
+    }
+  ]
+}

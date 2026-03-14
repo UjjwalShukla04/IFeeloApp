@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../auth/data/auth_repository.dart';
 
-class SplashScreen extends ConsumerStatefulWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  ConsumerState<SplashScreen> createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends ConsumerState<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
@@ -18,17 +16,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   }
 
   void _checkAuth() async {
-    // Wait for 10 seconds (as requested)
     await Future.delayed(const Duration(seconds: 5));
     if (!mounted) return;
-
-    // Check if user is logged in
-    final user = ref.read(authRepositoryProvider).currentUser;
-    if (user != null) {
-      context.go('/home');
-    } else {
-      context.go('/onboarding');
-    }
+    context.go('/onboarding');
   }
 
   @override

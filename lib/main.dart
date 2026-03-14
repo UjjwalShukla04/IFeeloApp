@@ -12,20 +12,22 @@ void main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
   } catch (e) {
-    runApp(MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text(
-            'Firebase not configured.\nPlease run "flutterfire configure" in your terminal.\n\nError: $e',
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.red),
+    runApp(
+      MaterialApp(
+        home: Scaffold(
+          body: Center(
+            child: Text(
+              'Firebase not configured.\nPlease run "flutterfire configure" in your terminal.\n\nError: $e',
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.red),
+            ),
           ),
         ),
       ),
-    ));
+    );
     return;
   }
-  
+
   runApp(const ProviderScope(child: DatingApp()));
 }
 

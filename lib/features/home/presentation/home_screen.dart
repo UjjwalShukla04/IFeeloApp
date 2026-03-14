@@ -59,9 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     // Simulate Match logic
                     if (currentIndex != null && currentIndex % 2 == 0) {
                       // Every 2nd swipe is a match for demo
+                      final router = GoRouter.of(context);
                       Future.delayed(const Duration(milliseconds: 200), () {
                         if (mounted) {
-                          context.push('/match-found', extra: candidate);
+                          router.push('/match-found', extra: candidate);
                         }
                       });
                     }
@@ -135,7 +136,7 @@ class _ActionButton extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: Colors.grey.withAlpha(51),
             blurRadius: 10,
             spreadRadius: 2,
           ),
@@ -189,8 +190,8 @@ class _CardView extends StatelessWidget {
                           end: Alignment.bottomCenter,
                           colors: [
                             Colors.transparent,
-                            Colors.black.withOpacity(0.1),
-                            Colors.black.withOpacity(0.8),
+                            Colors.black.withAlpha(26),
+                            Colors.black.withAlpha(204),
                           ],
                           stops: const [0.0, 0.6, 1.0],
                         ),
