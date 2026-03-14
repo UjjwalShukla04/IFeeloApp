@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -36,6 +37,7 @@ class AssessmentScreen extends StatefulWidget {
 
 class _AssessmentScreenState extends State<AssessmentScreen> {
   static const String _assetPath = 'assets/eq_assessment/questions.json';
+  static const int _questionsPerSection = 4;
 
   bool _loading = true;
   String? _loadError;
@@ -63,10 +65,12 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
       final sections = (decoded['sections'] as List)
           .cast<Map<String, dynamic>>();
 
+      final rng = Random();
       final flattened = <_Question>[];
       for (final section in sections) {
         final questions = (section['questions'] as List)
             .cast<Map<String, dynamic>>();
+        final sectionQuestions = <_Question>[];
         for (final q in questions) {
           final typeString = (q['type'] as String).toLowerCase().trim();
           final type = switch (typeString) {
@@ -89,7 +93,7 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
               .where((o) => o.id.isNotEmpty && o.text.isNotEmpty)
               .toList(growable: false);
 
-          flattened.add(
+          sectionQuestions.add(
             _Question(
               id: (q['id'] ?? '').toString(),
               text: (q['text'] ?? '').toString(),
@@ -98,11 +102,17 @@ class _AssessmentScreenState extends State<AssessmentScreen> {
             ),
           );
         }
+
+        sectionQuestions.shuffle(rng);
+        flattened.addAll(sectionQuestions.take(_questionsPerSection));
       }
 
       if (!mounted) return;
       setState(() {
         _questions = flattened;
+        _index = 0;
+        _answers.clear();
+        _resetInputs();
         _loading = false;
       });
     } catch (e) {

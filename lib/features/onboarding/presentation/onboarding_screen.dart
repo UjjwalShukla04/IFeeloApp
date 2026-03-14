@@ -98,43 +98,41 @@ class OnboardingScreen extends ConsumerWidget {
                           final user = ref
                               .read(authRepositoryProvider)
                               .currentUser;
-                          
+
                           if (user != null) {
                             debugPrint('User logged in: ${user.uid}');
                             try {
-                                final exists = await ref
-                                    .read(authRepositoryProvider)
-                                    .checkUserExists(user.uid);
-                                debugPrint('User exists in Firestore: $exists');
-                                if (exists) {
-                                  if (context.mounted) {
-                                    debugPrint('Navigating to Home...');
-                                    context.go('/');
-                                  }
-                                } else {
-                                  if (context.mounted) {
-                                    debugPrint('Navigating to Create Profile...');
-                                    context.go('/create-profile');
-                                  }
-                                }
-                            } catch (e) {
-                                debugPrint('Error checking user existence: $e');
-                                // Fallback: Assume new user if check fails (e.g. permission error)
+                              final exists = await ref
+                                  .read(authRepositoryProvider)
+                                  .checkUserExists(user.uid);
+                              debugPrint('User exists in Firestore: $exists');
+                              if (exists) {
                                 if (context.mounted) {
-                                    context.go('/create-profile');
+                                  debugPrint('Navigating to Home...');
+                                  context.go('/');
                                 }
+                              } else {
+                                if (context.mounted) {
+                                  debugPrint('Navigating to Create Profile...');
+                                  context.go('/create-profile');
+                                }
+                              }
+                            } catch (e) {
+                              debugPrint('Error checking user existence: $e');
+                              // Fallback: Assume new user if check fails (e.g. permission error)
+                              if (context.mounted) {
+                                context.go('/create-profile');
+                              }
                             }
                           } else {
-                             debugPrint('User is null after login.');
+                            debugPrint('User is null after login.');
                           }
                         } catch (e) {
                           debugPrint('Google Sign-In Error: $e');
                           if (context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text(
-                                  'Google sign-in failed: $e',
-                                ),
+                                content: Text('Google sign-in failed: $e'),
                               ),
                             );
                           }
@@ -160,7 +158,7 @@ class OnboardingScreen extends ConsumerWidget {
                       icon: Icons.person_outline,
                       label: 'Continue as Guest',
                       onPressed: () {
-                        context.go('/');
+                        context.go('/assessment');
                       },
                     ),
                     const SizedBox(height: 16),

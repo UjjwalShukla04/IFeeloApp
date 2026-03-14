@@ -97,7 +97,10 @@ class ApiService {
   ) async {
     final url = Uri.parse('$_baseUrl/assessment/submit');
     if (currentUserId == null) {
-      throw Exception('User not logged in');
+      hasCompletedAssessment = true;
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('has_completed_assessment', true);
+      return {'status': 'success', 'has_completed_assessment': true};
     }
 
     final payload = {"user_id": currentUserId, "responses": answers};
